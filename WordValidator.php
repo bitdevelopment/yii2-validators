@@ -45,8 +45,11 @@ class WordValidator extends \yii\validators\Validator {
    * @var string Error message if maximum number of words are exceeded. Default "Minimum :min words are required."
    */
   public $minWordsRequired;
-
-
+  /**
+   * @var int Word count
+   */
+  public $wCount; 
+  
   public function init() {
     
     if ($this->notString===NULL) {
@@ -77,15 +80,15 @@ class WordValidator extends \yii\validators\Validator {
         throw new Exception(\Yii::t('bitdevelopment', 'You have to define atleast min or max option!'), 500);
       }
       
-      $wCount = str_word_count($value, 0, $this->charlist);
+      $this->wCount = str_word_count($value, 0, $this->charlist);
       
-      if ($this->max!==NULL && $wCount>$this->max) {
+      if ($this->max!==NULL && $this->wCount>$this->max) {
         $this->addError($model, $attribute, $this->maxWordsExceeded);
                 
         return;
       }
       
-      if ($this->min!==NULL && $wCount>$this->min) {
+      if ($this->min!==NULL && $this->wCount>$this->min) {
         $this->addError($model, $attribute, $this->minWordsRequired);
       }
   }
