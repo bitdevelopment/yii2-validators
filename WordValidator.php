@@ -1,5 +1,11 @@
 <?php
-  
+/**
+ * @package   yii2-validators
+ * @author    Milos Radojevic <crnimilos@gmail.com>
+ * @copyright Copyright &copy; Milos Radojevic, 2015-2016
+ * @version   1.0.0
+ */
+
 namespace bitdevelopment\yii2validators;
 /**
  * Validator that checks number of words, minimum and maximum of words validation
