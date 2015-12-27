@@ -61,7 +61,7 @@ class WordValidator extends \yii\validators\Validator {
     }
     
     if ($this->minWordsRequired===NULL) {
-      $this->minWordsRequired = \Yii::t('bitdevelopment', 'Minimum :min words are required.',  [ 'min'=>  $this->min ]);
+      $this->minWordsRequired = \Yii::t('bitdevelopment', 'Minimum {min} words are required.',  [ 'min'=>  $this->min ]);
     }
     
     parent::init();    
