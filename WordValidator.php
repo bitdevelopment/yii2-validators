@@ -74,10 +74,10 @@ class WordValidator extends \yii\validators\Validator {
         return;
       }
       if ($this->max===NULL && $this->min===NULL) {
-        throw new \Exception(\Yii::t('bitdevelopment', 'You have to define atleast min or max option!'), 500);
+        throw new Exception(\Yii::t('bitdevelopment', 'You have to define atleast min or max option!'), 500);
       }
       
-      $wCount = str_word_count($string, 0, $this->charlist);
+      $wCount = str_word_count($value, 0, $this->charlist);
       
       if ($this->max!==NULL && $wCount>$this->max) {
         $this->addError($model, $attribute, $this->maxWordsExceeded);
