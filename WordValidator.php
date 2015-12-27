@@ -88,7 +88,7 @@ class WordValidator extends \yii\validators\Validator {
         return;
       }
       
-      if ($this->min!==NULL && $this->wCount>$this->min) {
+      if ($this->min!==NULL && $this->wCount<$this->min) {
         $this->addError($model, $attribute, $this->minWordsRequired);
       }
   }
