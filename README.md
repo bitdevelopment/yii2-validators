@@ -41,3 +41,9 @@ class Post extends \yii\base\Model {
   }
   ...
 ```
+If you want to validation occurs while user is typing you can use validateOnType option, for example:
+```php
+$form->field($model, 'comment',['validateOnType' => true])->textarea([
+                    'rows'=> 15
+            ]);
+```

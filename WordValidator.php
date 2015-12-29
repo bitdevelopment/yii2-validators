@@ -49,20 +49,23 @@ class WordValidator extends \yii\validators\Validator {
    * @var int Word count
    */
   public $wCount; 
+  public $validateOnType;
   
   public function init() {
     
     if ($this->notString===NULL) {
-      $this->notString = \Yii::t('bitdevelopment', 'Only text is allowed.');
+      $this->notString = 'Only text is allowed.';
     }
     
     if ($this->maxWordsExceeded===NULL) {
-      $this->maxWordsExceeded = \Yii::t('bitdevelopment', 'Maximum number of words are exceeded.');
+      $this->maxWordsExceeded = 'Maximum number of words are exceeded.';
     }
     
     if ($this->minWordsRequired===NULL) {
-      $this->minWordsRequired = \Yii::t('bitdevelopment', 'Minimum {min} words are required.',  [ 'min'=>  $this->min ]);
+      $this->minWordsRequired = 'Minimum {min} words are required. {words} words more needed.';
     }
+    
+    $this->validateOnType = true;
     
     parent::init();    
   }
@@ -72,7 +75,7 @@ class WordValidator extends \yii\validators\Validator {
       $value=$model->$attribute;
       
       if (!is_string($value)) {
-        $this->addError($model, $attribute, $this->notString);
+        $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->notString));
         
         return;
       }
@@ -83,13 +86,19 @@ class WordValidator extends \yii\validators\Validator {
       $this->wCount = str_word_count($value, 0, $this->charlist);
       
       if ($this->max!==NULL && $this->wCount>$this->max) {
-        $this->addError($model, $attribute, $this->maxWordsExceeded);
+        $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->maxWordsExceeded));
                 
         return;
       }
       
       if ($this->min!==NULL && $this->wCount<$this->min) {
-        $this->addError($model, $attribute, $this->minWordsRequired);
+        $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->minWordsRequired,  
+                [ 'min'=>  $this->min, 'words'=> $this->min-$this->wCount ]));
       }
+  }
+  
+  public function clientValidateAttribute($model, $attribute, $view) {
+    WordValidatorAsset::register($view);
+    return 'yii.validation.wordvalidator(value, messages, ' . json_encode($this) . ');';
   }
 }
