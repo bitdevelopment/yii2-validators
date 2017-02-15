@@ -102,14 +102,15 @@ yii.validation.wordvalidator = function (value, messages, options) {
             var remaining = options.max-count;
             var required = options.min-count;
             if (remaining<0) {
-                var message = options.maxWordsExceeded.replace('{words}',remaining);
+                var message = options.maxWordsExceeded.replace('{words}',-remaining);
             } else if(required>=0) {
                 var message = options.minWordsRequired.replace('{words}',required);
             } else {
                 valid = true;
                 var message = "";
             }          
-            message = message.replace('{min}',options.min);
+            message = message.replace('{min}',options.min).replace('{max}',options.max);
+            
             if (!valid) {
                 yii.validation.addMessage(messages, message, value);
             }

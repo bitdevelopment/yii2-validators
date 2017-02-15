@@ -86,14 +86,16 @@ class WordValidator extends \yii\validators\Validator {
       $this->wCount = str_word_count($value, 0, $this->charlist);
       
       if ($this->max!==NULL && $this->wCount>$this->max) {
-        $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->maxWordsExceeded));
+        $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->maxWordsExceeded, [
+             [ 'min'=>  $this->min, 'max'=> $this->max, 'words'=> $this->wCount - $this->max ]
+        ]));
                 
         return;
       }
       
       if ($this->min!==NULL && $this->wCount<$this->min) {
         $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->minWordsRequired,  
-                [ 'min'=>  $this->min, 'words'=> $this->min-$this->wCount ]));
+                [ 'min'=>  $this->min, 'max'=> $this->max, 'words'=> $this->min-$this->wCount]));
       }
   }
   
