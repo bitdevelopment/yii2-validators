@@ -87,7 +87,7 @@ class WordValidator extends \yii\validators\Validator {
       
       if ($this->max!==NULL && $this->wCount>$this->max) {
         $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->maxWordsExceeded, [
-             [ 'min'=>  $this->min, 'max'=> $this->max, 'words'=> $this->wCount - $this->max ]
+             'min'=>  $this->min, 'max'=> $this->max, 'words'=> $this->wCount - $this->max 
         ]));
                 
         return;
