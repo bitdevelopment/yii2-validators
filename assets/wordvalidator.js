@@ -97,6 +97,9 @@ yii.validation.wordvalidator = function (value, messages, options) {
                     throw 'You have supplied an incorrect format';
             };
 
+	    if (options.stripTags) {
+		value = text = $("<div/>").html(value).text();
+            }
             var count = countWords(value);
 
             var remaining = options.max-count;

@@ -50,6 +50,8 @@ class WordValidator extends \yii\validators\Validator {
    */
   public $wCount; 
   public $validateOnType;
+
+  public $stripTags = false;
   
   public function init() {
     
@@ -72,17 +74,21 @@ class WordValidator extends \yii\validators\Validator {
 
   public function validateAttribute($model, $attribute) {
       
-      $value=$model->$attribute;
-      
+      $value=$model->$attribute;      
+	
       if (!is_string($value)) {
         $this->addError($model, $attribute, \Yii::t('bitdevelopment', $this->notString));
         
         return;
       }
+
       if ($this->max===NULL && $this->min===NULL) {
         throw new Exception(\Yii::t('bitdevelopment', 'You have to define atleast min or max option!'), 500);
       }
-      
+
+      if ($this->stripTags) {
+	$value = strip_tags($value);
+      }      
       $this->wCount = str_word_count($value, 0, $this->charlist);
       
       if ($this->max!==NULL && $this->wCount>$this->max) {
