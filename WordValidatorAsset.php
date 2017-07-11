@@ -1,19 +1,19 @@
 <?php
-
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @package yii2-widgets
- * @subpackage yii2-widget-datetimepicker
- * @version 1.4.1
+ * @package   yii2-validators
+ * @subpackage yii2-validators\word-validator
+ * @author    Milos Radojevic <crnimilos@gmail.com>
+ * @copyright Copyright &copy; Milos Radojevic, 2015-2017
+ * @version   1.0.1 (stable)
+ * @license http://opensource.org/licenses/MIT MIT
  */
 
 namespace bitdevelopment\yii2validators;
 
 /**
- * Asset bundle for DateTimePicker Widget
+ * WordValidator Asset Bundle
  *
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @author Milos Radojevic
  */
 class WordValidatorAsset extends \yii\web\AssetBundle
 {
@@ -27,4 +27,3 @@ class WordValidatorAsset extends \yii\web\AssetBundle
         parent::init();
     }
 }
-  
