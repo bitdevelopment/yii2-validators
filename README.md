@@ -6,6 +6,10 @@ Currently it holds 2 validators but will be extended in future.
 	- WordCount Validator
 	- ReCaptcha Validator and InputWidget
 
+Recaptcha validator and InputWidget is having new features: 
+  - Compatible with Pjax
+  - Added ability to have more than one ReCaptcha widget on same page
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Check the [composer.json](https://github.com/bitdevelopment/yii2-validators/blob/master/composer.json) for this extension's requirements and dependencies.
@@ -46,7 +50,9 @@ class Post extends \yii\base\Model {
   }
   ...
 ```
+
 If you want to validation occurs while user is typing you can use validateOnType option, for example:
+
 ```php
 $form->field($model, 'comment',['validateOnType' => true])->textarea([
                     'rows'=> 15
@@ -55,7 +61,49 @@ $form->field($model, 'comment',['validateOnType' => true])->textarea([
 
 ### ReCaptcha Validator and Widget setup
 
+There are two ways of setting ReCaptcha Validator in your project, one is inline setup, if you decide to use multiple key:secret pairs and setup in your `params.php` file if you have global setup 
 
 ##### Setting up in params
+
+In your `params.php` file of your project setup new key so it will look like this: 
+```php
+return [
+       /*
+	* Your params...
+	*/
+ 	'reCaptcha' => [
+        	'siteKey' => 'site_key',
+        	'secret' => 'secret_key',
+    	],
+];
+```
+
+Note that `site_key` and `secret_key` you can obtain on your [Google ReCaptcha Admin](https://www.google.com/recaptcha/admin).
+
+Now let's setup validation in your Model:
+
+```php 
+use bitdevelopment\yii2-validators\ReCaptchaValidator;
+
+class Post extends \yii\base\Model {
+
+  public $reCaptcha;
+
+  public function rules() {
+    return [
+            [['reCaptcha'], ReCaptchaValidator::className()],
+	    [['reCaptcha'], 'required'],
+    ];
+  }
+  ...
+```
+
+And Last step is to setup inputWidget on your view file, where your form is:
+```php 
+echo $form->field($comments, 'reCaptcha')->widget(
+                            ReCaptcha::className(),
+                        )->label(false) ?>
+```
+
 
 ##### Inline Settings
