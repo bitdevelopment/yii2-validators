@@ -1,7 +1,10 @@
 yii2-validators
 ===================
 
-Yii2-validators are validators for yii for some specific cases that are not covered by standard yii2 validators. Currently it holds only WordCount validator but it will be extended in future.
+Yii2-validators are validators for yii for some specific cases that are not covered by standard yii2 validators. 
+Currently it holds 2 validators but will be extended in future.
+	- WordCount Validator
+	- ReCaptcha Validator and InputWidget
 
 ## Installation
 
@@ -27,6 +30,8 @@ to the ```require``` section of your `composer.json` file.
 
 ## Usage
 
+#WordCount Validator
+
 Add validator to your rules list in your model
 
 ```php
@@ -47,3 +52,5 @@ $form->field($model, 'comment',['validateOnType' => true])->textarea([
                     'rows'=> 15
             ]);
 ```
+
+#ReCaptcha Validator and Widget setup
