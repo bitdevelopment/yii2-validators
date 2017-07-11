@@ -30,7 +30,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Usage
 
-#WordCount Validator
+### WordCount Validator
 
 Add validator to your rules list in your model
 
@@ -53,4 +53,9 @@ $form->field($model, 'comment',['validateOnType' => true])->textarea([
             ]);
 ```
 
-#ReCaptcha Validator and Widget setup
+### ReCaptcha Validator and Widget setup
+
+
+##### Setting up in params
+
+##### Inline Settings
