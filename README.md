@@ -17,13 +17,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 To install, either run
 
 ```
-$ php composer.phar require bitdevelopment/yii2-validators "dev-master"
+$ php composer.phar require bitdevelopment/yii2-validators "v1.1.0"
 ```
 
 or add
 
 ```
-"bitdevelopment/yii2-validators": "dev-master"
+"bitdevelopment/yii2-validators": "v1.1.0"
 ```
 
 to the ```require``` section of your `composer.json` file.
