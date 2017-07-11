@@ -101,9 +101,25 @@ class Post extends \yii\base\Model {
 And Last step is to setup inputWidget on your view file, where your form is:
 ```php 
 echo $form->field($comments, 'reCaptcha')->widget(
-                            ReCaptcha::className(),
-                        )->label(false) ?>
+            	bitdevelopment\yii2validators\ReCaptcha::className(),
+        )->label(false) ?>
 ```
 
 
 ##### Inline Settings
+
+Similarly like when setting up with `params.php` you can setup params inline against a field, like in this example:
+
+```php
+  //In your rules
+  [['reCaptcha'], ReCaptchaValidator::className(),'secret'=>'secret_key'],
+  ...
+```
+
+```php
+  //In your view
+  echo $form->field($comments, 'reCaptcha')->widget(
+            	bitdevelopment\yii2validators\ReCaptcha::className(),
+		['siteKey','site_key']
+        )->label(false) ?>
+```
