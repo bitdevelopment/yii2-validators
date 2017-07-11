@@ -30,7 +30,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Latest Release
 
-> NOTE: The latest version of the module is v1.0.0.
+> NOTE: The latest version of the module is v1.1.0.
 
 ## Usage
 
