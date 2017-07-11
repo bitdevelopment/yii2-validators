@@ -3,8 +3,8 @@ yii2-validators
 
 Yii2-validators are validators for yii for some specific cases that are not covered by standard yii2 validators. 
 Currently it holds 2 validators but will be extended in future.
-	- WordCount Validator
-	- ReCaptcha Validator and InputWidget
+  - WordCount Validator
+  - ReCaptcha Validator and InputWidget
 
 Recaptcha validator and InputWidget is having new features: 
   - Compatible with Pjax
@@ -58,6 +58,8 @@ $form->field($model, 'comment',['validateOnType' => true])->textarea([
                     'rows'=> 15
             ]);
 ```
+
+> Since version v1.1.0 stripTags feature has been added, that strips HTML tags before it counts words, by default stripTags is setup to false.
 
 ### ReCaptcha Validator and Widget setup
 
