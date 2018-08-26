@@ -39,7 +39,7 @@ to the ```require``` section of your `composer.json` file.
 Add validator to your rules list in your model
 
 ```php
-use bitdevelopment\yii2-validators\WordValidator;
+use bitdevelopment\yii2validators\WordValidator;
 
 class Post extends \yii\base\Model {
 
@@ -85,7 +85,7 @@ Note that `site_key` and `secret_key` you can obtain on your [Google ReCaptcha A
 Now let's setup validation in your Model:
 
 ```php 
-use bitdevelopment\yii2-validators\ReCaptchaValidator;
+use bitdevelopment\yii2validators\ReCaptchaValidator;
 
 class Post extends \yii\base\Model {
 
