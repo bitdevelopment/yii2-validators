@@ -106,7 +106,7 @@ yii.validation.wordvalidator = function (value, messages, options) {
             var required = options.min-count;
             if (remaining<0) {
                 var message = options.maxWordsExceeded.replace('{words}',-remaining);
-            } else if(required>=0) {
+            } else if(required>0) {
                 var message = options.minWordsRequired.replace('{words}',required);
             } else {
                 valid = true;
