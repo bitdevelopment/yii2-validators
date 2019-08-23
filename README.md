@@ -3,8 +3,8 @@ yii2-validators
 
 Yii2-validators are validators for yii for some specific cases that are not covered by standard yii2 validators. 
 Currently it holds 2 validators but will be extended in future.
-	- WordCount Validator
-	- ReCaptcha Validator and InputWidget
+  - WordCount Validator
+  - ReCaptcha Validator and InputWidget
 
 Recaptcha validator and InputWidget is having new features: 
   - Compatible with Pjax
@@ -39,7 +39,7 @@ to the ```require``` section of your `composer.json` file.
 Add validator to your rules list in your model
 
 ```php
-use bitdevelopment\yii2-validators\WordValidator;
+use bitdevelopment\yii2validators\WordValidator;
 
 class Post extends \yii\base\Model {
 
@@ -58,6 +58,8 @@ $form->field($model, 'comment',['validateOnType' => true])->textarea([
                     'rows'=> 15
             ]);
 ```
+
+> Since version v1.1.0 stripTags feature has been added, that strips HTML tags before it counts words, by default stripTags is setup to false.
 
 ### ReCaptcha Validator and Widget setup
 
@@ -83,7 +85,7 @@ Note that `site_key` and `secret_key` you can obtain on your [Google ReCaptcha A
 Now let's setup validation in your Model:
 
 ```php 
-use bitdevelopment\yii2-validators\ReCaptchaValidator;
+use bitdevelopment\yii2validators\ReCaptchaValidator;
 
 class Post extends \yii\base\Model {
 
